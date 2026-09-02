@@ -1,6 +1,5 @@
 name: Node.js CI Pipeline
 
-# Trigger CI agar berjalan setiap kali ada push ke branch 'main'
 on:
   push:
     branches: [ "main" ]
@@ -12,20 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Mengambil kode dari repository
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  # Diperbarui ke v4
 
-    # Menyiapkan environment Node.js
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4  # Diperbarui ke v4
       with:
-        node-version: '18.x'
+        node-version: '22.x'       # Diperbarui ke versi LTS yang lebih baru
 
-    # Menginstal dependencies (Jest)
     - name: Install dependencies
       run: npm install
 
-    # Menjalankan unit test
     - name: Run tests
       run: npm test
